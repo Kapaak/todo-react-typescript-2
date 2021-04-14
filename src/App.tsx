@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import { ITask } from "./components/Interfaces";
+import TodoList from "./components/TodoList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// const [todos, setTodos] = useState<object[]>([]);
+	const [todos, setTodos] = useState<ITask[]>([]);
+
+	const addTodo = (todo: ITask): void => {
+		setTodos([...todos, todo]);
+	};
+
+	return (
+		<div className="App">
+			<h1>Damn you I am here again</h1>
+			<Form addTodo={addTodo} />
+			<TodoList todos={todos} />
+		</div>
+	);
 }
 
 export default App;
